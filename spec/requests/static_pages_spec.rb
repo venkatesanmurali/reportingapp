@@ -8,7 +8,12 @@ describe "StaticPages" do
   		page.should have_content('Report app')
   	end
 
-    it "should have title 'Home'" do
+    it "should have base title 'Reporting app'" do
+      visit '/static_pages/home'
+      page.should have_selector('title',text: "Reporting app")
+    end
+
+    it "should have page title 'Home'" do
       visit '/static_pages/home'
       page.should have_selector('title',text: "| Home")
     end
@@ -20,6 +25,11 @@ describe "StaticPages" do
   		page.should have_content('Help')
   	end
 
+    it "should have base title 'Reporting app'" do
+      visit '/static_pages/help'
+      page.should have_selector('title',text: "Reporting app")
+    end
+
     it "should have title 'Help'" do
       visit '/static_pages/help'
       page.should have_selector('title',text: "| Help")
@@ -30,6 +40,11 @@ describe "StaticPages" do
     it "should have the content about us" do
       visit '/static_pages/about'
       page.should have_content('About')
+    end
+
+    it "should have base title 'Reporting app'" do
+      visit '/static_pages/about'
+      page.should have_selector('title',text: "Reporting app")
     end
 
     it "should have title 'About us'" do
