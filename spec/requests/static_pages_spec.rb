@@ -1,56 +1,38 @@
 require 'spec_helper'
 
 describe "StaticPages" do
+  subject { page }
 
   describe "Home page" do
-  	it "Should have the content Report app" do
-  		visit '/static_pages/home'
-  		page.should have_content('Report app')
-  	end
+    before { visit root_path }
 
-    it "should have base title 'Reporting app'" do
-      visit '/static_pages/home'
-      page.should have_selector('title',text: "Reporting app")
-    end
+  	it { should have_content('Report app') }
 
-    it "should have page title 'Home'" do
-      visit '/static_pages/home'
-      page.should have_selector('title',text: "| Home")
-    end
+    it { should have_selector('title',text: full_title('Home')) }
   end
 
   describe "Help page" do
-  	it "should have the econtent Help" do
-  		visit '/static_pages/help'
-  		page.should have_content('Help')
-  	end
+    before { visit help_path }
+  	it { should have_content('Help') }
 
-    it "should have base title 'Reporting app'" do
-      visit '/static_pages/help'
-      page.should have_selector('title',text: "Reporting app")
-    end
-
-    it "should have title 'Help'" do
-      visit '/static_pages/help'
-      page.should have_selector('title',text: "| Help")
-    end
+    it { should have_selector('title',text: full_title('Help')) }
   end
 
   describe "About us" do
-    it "should have the content about us" do
-      visit '/static_pages/about'
-      page.should have_content('About')
-    end
+    before { visit about_path }
 
-    it "should have base title 'Reporting app'" do
-      visit '/static_pages/about'
-      page.should have_selector('title',text: "Reporting app")
-    end
+    it { should have_content('About') }
 
-    it "should have title 'About us'" do
-      visit '/static_pages/about'
-      page.should have_selector('title',text: "| About us")
-    end
+    it { should have_selector('title',text: full_title('About us')) }
+  end
+
+  describe "Contact page" do
+    before { visit contact_path }
+
+    it { should have_selector('h1', text: 'Contact') }
+
+    it { should have_selector('title',
+                    text: full_title('Contact')) }
   end
   
 end
