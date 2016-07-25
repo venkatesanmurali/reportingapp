@@ -1,12 +1,32 @@
 <% provide(:title, 'Home') %>
-
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+    </aside>
+    <% 2.times do %>
+      <br>
+    <% end %>
+    <i><section class="pull-right" style="font-size:150%;" >Report for: <em><%= Time.now.strftime("%d/%m/%Y") %></em></section></i>
+    <% 3.times do %>
+      <br>
+    <% end %>
+      <section>
+        <%= render 'shared/report_form' %>
+      </section>
+  </div>
+<% else %>
 <div class = "center hero-unit">
-
-	<h1>Report app</h1>
-	<h2>
-		This is the home page of the report app
-	</h2>
-
+	<div>
+	<h1>Need simple solution for reporting?</h1>
+	<h2>You are one step closer</h2>
+	<img src="http://www.telegraph.co.uk/content/dam/technology/2016/05/11/97499691-google-tech-large_trans++piVx42joSuAkZ0bE9ijUnFGe0z9p1LAF7TfYUjaG654.jpg", alt="Home_image", style="width:480px;height:240px;">
+	</div>
+	<div>
 	<%= link_to "Sign up", signup_path, class: "btn btn-large btn-primary" %>
+	</div>
 </div>
+<% end %>
 

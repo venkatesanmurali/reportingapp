@@ -8,4 +8,17 @@
 			</h1>
 		</section>
 	</aside>
+	<div class="span8">
+		<% if @user.reports.any? %>
+			<h3>Reports</h3>
+			<ol class="reports">
+			<% @reports.each do |rep| %>
+			<li>
+				<span class="content"><%=rep.content%></span>
+				<span class="timestamp">Posted <%= time_ago_in_words(rep.created_at)%> ago.</span>
+			</li>
+			<% end %>
+			</ol>
+		<% end %>
+	</div>
 </div>

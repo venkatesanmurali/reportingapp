@@ -1,8 +1,13 @@
 ReportApp::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :reports, only: [:create, :destroy]
 
   root to: "static_pages#home"
+
+  match '/report_post',to: "users#report_post"
+
+  match '/search', to: "users#search"
 
   match '/signup', to:"users#new"
 
