@@ -1,7 +1,13 @@
 ReportApp::Application.routes.draw do
-  resources :users
+  resources :users do
+    member do
+      get :following , :followers, :see_reports
+    end
+  end
+  
   resources :sessions, only: [:new, :create, :destroy]
   resources :reports, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
   root to: "static_pages#home"
 

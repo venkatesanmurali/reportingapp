@@ -12,6 +12,8 @@ class ReportsController < ApplicationController
 	end
 
 	def destroy
+		@report.destroy
+		render @root_url
 
 	end
 end

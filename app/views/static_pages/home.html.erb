@@ -5,6 +5,9 @@
       <section>
         <%= render 'shared/user_info' %>
       </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
     </aside>
     <% 2.times do %>
       <br>
@@ -22,7 +25,7 @@
 	<div>
 	<h1>Need simple solution for reporting?</h1>
 	<h2>You are one step closer</h2>
-	<img src="http://www.telegraph.co.uk/content/dam/technology/2016/05/11/97499691-google-tech-large_trans++piVx42joSuAkZ0bE9ijUnFGe0z9p1LAF7TfYUjaG654.jpg", alt="Home_image", style="width:480px;height:240px;">
+	<%= image_tag("report_home_image.jpg",height: 480, width:360) %>
 	</div>
 	<div>
 	<%= link_to "Sign up", signup_path, class: "btn btn-large btn-primary" %>

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :signed_in_user, only: [:index,:edit, :update]
-  before_filter :correct_user, only: [:edit,:update]
+  before_filter :signed_in_user, only: [:index,:edit, :update,:following,:followers]
+  before_filter :correct_user, only: [:edit,:update,:see_reports]
   before_filter :admin_user, only: [:destroy]
   
   def new
@@ -55,6 +55,28 @@ class UsersController < ApplicationController
     @ret = User.find_by_name(params[:q])
     render 'shared/search_result'
   end 
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.followed_users
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follow'
+  end
+
+  def see_reports
+    @title = "Last Report"
+    @user = User.find(params[:id])
+    @users=@user.followed_users
+    
+    render 'shared/see_reports'
+  end
 
   private 
 
